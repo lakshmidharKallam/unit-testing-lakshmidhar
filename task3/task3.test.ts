@@ -20,7 +20,7 @@ const RealDate = global.Date;
     const frozenTime = "2023-01-01T12:00:00Z";
     mock.set({ isoDate: frozenTime });
     const now = new Date();
-    expect(Date.parse(now.toISOString())).toBe(Date.parse(frozenTime));
+    expect(Date.parse(now.toISOString())).toBe(Date.parse(frozenTime)); 
     mock.reset();
     });
   
@@ -57,7 +57,7 @@ const RealDate = global.Date;
     const frozenTime = "2023-04-01T10:00:00Z";
     mock.set({ isoDate: frozenTime });
     const result = getUtcStringDate();
-    expect(Date.parse(result)).toBe(Date.parse("2023-04-01T10:00:00Z"));
+    expect(result).toBe("2023-04-01T10:00:00.000Z");
     mock.reset();
   });
 
@@ -66,7 +66,7 @@ const RealDate = global.Date;
     mock.set({ offset: 5.5 });
     const date = new Date("2023-03-31T23:30:00+05:30");
     const result = getUtcStringDate(date);
-    expect(Date.parse(result)).toBe(Date.parse("2023-03-31T18:00:00Z"));
+    expect(result).toBe("2023-03-31T18:00:00.000Z");
     mock.reset();
   });
 
@@ -75,7 +75,7 @@ const RealDate = global.Date;
     mock.set({ offset: -8 });
     const date = new Date("2023-03-31T16:00:00-08:00");
     const result = getUtcStringDate(date);
-    expect(Date.parse(result)).toBe(Date.parse("2023-04-01T00:00:00Z"));
+    expect(result).toBe("2023-04-01T00:00:00.000Z");
     mock.reset();
   });
 
